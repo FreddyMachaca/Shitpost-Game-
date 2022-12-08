@@ -11,29 +11,29 @@ class RecordesPage extends StatelessWidget {
   const RecordesPage({Key? key, required this.modo}) : super(key: key);
 
   getModo() {
-    return modo == Modo.normal ? 'Normal' : 'Dificil';
+    return modo == Modo.normal ? 'Normal' : 'Dificil'; //retorna el modo
   }
 
-  List<Widget> getRecordesList(Map recordes) {
+  List<Widget> getRecordesList(Map recordes) { //funcion para crear la lista de recordes
     final List<Widget> widgets = [];
 
-    recordes.forEach((nivel, score) {
-      widgets.add(ListTile(
-        title: Text('Nível $nivel'),
-        trailing: Text(score.toString()),
-        tileColor: Colors.grey[900],
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(15)),
+    recordes.forEach((nivel, score) { //itera sobre la lista de recordes
+      widgets.add(ListTile( //agrega un widget a la lista
+        title: Text('Nível $nivel'), //titulo del widget
+        trailing: Text(score.toString()), //texto al final del widget
+        tileColor: Colors.grey[900],//color del widget
+        shape: const RoundedRectangleBorder( //forma del widget
+          borderRadius: BorderRadius.all(Radius.circular(15)),//radio de la forma
         ),
       ));
 
-      widgets.add(const Divider(color: Colors.transparent));
+      widgets.add(const Divider(color: Colors.transparent)); //agrega un widget a la lista
     });
 
-    if (widgets.isEmpty) {
-      widgets.add(
-        const Center(
-          child: Text('AUN NO AHI RECORDS!'),
+    if (widgets.isEmpty) { //si la lista esta vacia
+      widgets.add( //agrega un widget a la lista
+        const Center( //centra el widget
+          child: Text('AUN NO AHI RECORDS!'), //texto del widget
         ),
       );
     }
@@ -45,29 +45,29 @@ class RecordesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final repository = Provider.of<RecordesRepository>(context);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Recordes'),
+    return Scaffold( //scaffold es un widget que nos permite crear una pantalla
+      appBar: AppBar( //appbar es un widget que nos permite crear una barra de titulo
+        title: const Text('Recordes'), //titulo de la barra
       ),
       body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Observer(
-          builder: (context) => Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+        padding: const EdgeInsets.all(12.0), //espacio alrededor del widget
+        child: Observer( //observer es un widget que nos permite observar cambios en el estado
+          builder: (context) => Column( //column es un widget que nos permite crear una columna
+            mainAxisAlignment: MainAxisAlignment.start, //alinea los widgets al inicio
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 36, bottom: 24),
-                child: Center(
-                  child: Text(
-                    'Modo ${getModo()}',
-                    style: const TextStyle(
+                padding: const EdgeInsets.only(top: 36, bottom: 24), //espacio alrededor del widget
+                child: Center( //centra el widget
+                  child: Text( //texto del widget
+                    'Modo ${getModo()}', //$ es para concatenar
+                    style: const TextStyle( //estilo del texto
                         fontSize: 28, color: ShitpostThemeColor.color),
                   ),
                 ),
               ),
-              ...getRecordesList(modo == Modo.normal
-                  ? repository.recordesNormal
-                  : repository.recordesRound6),
+              ...getRecordesList(modo == Modo.normal //si el modo es normal
+                  ? repository.recordesNormal //retorna los recordes normales
+                  : repository.recordesRound6), //retorna los recordes dificiles
             ],
           ),
         ),

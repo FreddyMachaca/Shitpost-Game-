@@ -9,91 +9,91 @@ import 'package:flutter_memory_game/theme.dart';
 import 'package:provider/provider.dart';
 
 class CardGame extends StatefulWidget {
-  final Modo modo;
-  final GameOpcion gameOpcion;
+  final Modo modo; // Modo de jogo
+  final GameOpcion gameOpcion; // Opção de jogo
 
-  const CardGame({
+  const CardGame({ // Construtor
     Key? key,
     required this.modo,
     required this.gameOpcion,
   }) : super(key: key);
 
   @override
-  State<CardGame> createState() => _CardGameState();
+  State<CardGame> createState() => _CardGameState(); // Estado
 }
 
 class _CardGameState extends State<CardGame>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController animation;
+    with SingleTickerProviderStateMixin { // Animacion
+  late final AnimationController animation; // Controlador de animacion
 
   @override
-  void initState() {
-    super.initState();
-    animation = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 400),
+  void initState() { // Inicializar
+    super.initState(); // Super
+    animation = AnimationController( // Controlador de animacion
+      vsync: this, // vsync
+      duration: const Duration(milliseconds: 400), // Duracion
     );
   }
 
   @override
-  void dispose() {
-    animation.dispose();
-    super.dispose();
+  void dispose() { // Dispose es para liberar recursos
+    animation.dispose(); // Dispose de la animacion
+    super.dispose();  // Super
   }
 
-  AssetImage getImage(double angulo) {
-    if (angulo > 0.5 * pi) {
-      return AssetImage('images/${widget.gameOpcion.opcion.toString()}.png');
-    } else {
-      return widget.modo == Modo.normal
-          ? const AssetImage('images/card_normal.png')
-          : const AssetImage('images/card_round.png');
+  AssetImage getImage(double angulo) { // Obtener imagen
+    if (angulo > 0.5 * pi) { // Si el angulo es mayor a la mitad del pi
+      return AssetImage('images/${widget.gameOpcion.opcion.toString()}.png'); // Retornar la imagen
+    } else { // Si no
+      return widget.modo == Modo.normal // Si el modo es normal
+          ? const AssetImage('images/card_normal.png') // Retornar la imagen
+          : const AssetImage('images/card_round.png'); // Retornar la imagen
     }
   }
 
-  flipCard() {
-    final game = context.read<GameController>();
+  flipCard() { // Girar la carta
+    final game = context.read<GameController>(); // Leer el juego
 
-    if (!animation.isAnimating &&
-        !widget.gameOpcion.matched &&
-        !widget.gameOpcion.selected &&
-        !game.jugadaCompleta) {
-      animation.forward();
-      game.escojer(widget.gameOpcion, resetCard);
+    if (!animation.isAnimating && // Si la animacion no esta animando
+        !widget.gameOpcion.matched && // Si la opcion no esta emparejada
+        !widget.gameOpcion.selected && // Si la opcion no esta seleccionada
+        !game.jugadaCompleta) { // Si la jugada no esta completa
+      animation.forward(); // Animacion hacia adelante
+      game.escojer(widget.gameOpcion, resetCard); // Escojer la opcion
     }
   }
 
-  resetCard() {
-    animation.reverse();
+  resetCard() { // Resetear la carta
+    animation.reverse(); // Animacion hacia atras
   }
 
   @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: animation,
-      builder: (BuildContext context, _) {
-        final angulo = animation.value * pi;
-        final transform = Matrix4.identity()
-          ..setEntry(3, 2, 0.002)
-          ..rotateY(angulo);
+  Widget build(BuildContext context) { // Construir
+    return AnimatedBuilder( // Construir animacion
+      animation: animation, // Animacion
+      builder: (BuildContext context, _) { // Builder
+        final angulo = animation.value * pi; // Obtener el angulo
+        final transform = Matrix4.identity() // Matriz de identidad
+          ..setEntry(3, 2, 0.002) // Entrada
+          ..rotateY(angulo); // Rotar en Y
 
-        return GestureDetector(
-          onTap: () => flipCard(),
-          child: Transform(
-            transform: transform,
-            alignment: Alignment.center,
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: widget.modo == Modo.normal
-                      ? Colors.white
-                      : ShitpostThemeColor.color,
-                  width: 2,
+        return GestureDetector( // Detectar gestos
+          onTap: () => flipCard(), // Al tocar la carta
+          child: Transform( // Transformar
+            transform: transform, // Transformar
+            alignment: Alignment.center, // Alineacion
+            child: Container( // Contenedor
+              decoration: BoxDecoration( // Decoracion
+                border: Border.all( // Borde
+                  color: widget.modo == Modo.normal // Si el modo es normal
+                      ? Colors.white // Color blanco
+                      : ShitpostThemeColor.color, // Color de la tematica
+                  width: 2, // Ancho
                 ),
-                borderRadius: const BorderRadius.all(Radius.circular(5)),
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: getImage(angulo),
+                borderRadius: const BorderRadius.all(Radius.circular(5)), // Borde redondeado
+                image: DecorationImage( // Imagen de decoracion
+                  fit: BoxFit.cover, // Ajustar
+                  image: getImage(angulo), // Obtener imagen
                 ),
               ),
             ),

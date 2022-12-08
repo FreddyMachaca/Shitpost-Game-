@@ -11,34 +11,35 @@ class FeedbackGame extends StatelessWidget {
 
   String getResultado() {
     return resultado == Resultado.aprobado ? 'aprovado' : 'eliminado';
+    // Si el resultado es aprobado retornar aprovado, si no retornar eliminado
   }
 
   @override
-  Widget build(BuildContext context) {
-    final controller = context.read<GameController>();
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 12),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+  Widget build(BuildContext context) { // Construir
+    final controller = context.read<GameController>(); // Leer el controlador
+    return Padding( // Padding
+      padding: const EdgeInsets.symmetric(vertical: 60, horizontal: 12), // Vertical 60, horizontal 12
+      child: Column( // Columna
+        mainAxisAlignment: MainAxisAlignment.start,// Alineacion al inicio
         children: [
           Text(
-            '${getResultado().toUpperCase()}!',
-            style: const TextStyle(fontSize: 30),
+            '${getResultado().toUpperCase()}!', // Texto
+            style: const TextStyle(fontSize: 30), // Estilo
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 30),
-            child: Image.asset('images/${getResultado()}.png'),
+            padding: const EdgeInsets.symmetric(vertical: 30), // Vertical 30
+            child: Image.asset('images/${getResultado()}.png'), // Imagen
           ),
-          resultado == Resultado.eliminado
-              ? StartButton(
-                  title: 'Intente de nuevo',
-                  color: Colors.white,
-                  action: () => controller.restartGame(),
+          resultado == Resultado.eliminado // Si el resultado es eliminado
+              ? StartButton( // Boton de inicio
+                  title: 'Intente de nuevo', // Titulo
+                  color: Colors.white, // Color blanco
+                  action: () => controller.restartGame(), // Reiniciar juego
                 )
-              : StartButton(
-                  title: 'Próximo Nível',
-                  color: Colors.white,
-                  action: () => controller.nextLevel(),
+              : StartButton( // Boton de inicio
+                  title: 'Próximo Nível', // Titulo
+                  color: Colors.white, // Color blanco
+                  action: () => controller.nextLevel(), // Siguiente nivel
                 ),
         ],
       ),

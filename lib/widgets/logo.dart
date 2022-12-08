@@ -9,19 +9,19 @@ class Logo extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(bottom: 20),
-          child: Image.asset('images/host.png', width: 200, height: 125),
+          padding: const EdgeInsets.only(bottom: 20), // Espacio de 20
+          child: Image.asset('images/host.png', width: 200, height: 125), // detalles de la Imagen
         ),
         Padding(
-          padding: const EdgeInsets.only(bottom: 40),
-          child: RichText(
-            text: TextSpan(
-              text: 'SHITPOST ',
-              style: DefaultTextStyle.of(context).style.copyWith(fontSize: 30),
+          padding: const EdgeInsets.only(bottom: 40), // Espacio de 40
+          child: RichText( // Texto enriquecido
+            text: TextSpan( // Texto enriquecido
+              text: 'SHITPOST ', // Texto
+              style: DefaultTextStyle.of(context).style.copyWith(fontSize: 30), // Estilo
               children: const [
                 TextSpan(
-                  text: 'Memory',
-                  style: TextStyle(color: ShitpostThemeColor.color),
+                  text: 'Memory', // Texto
+                  style: TextStyle(color: ShitpostThemeColor.color), // Estilo
                 )
               ],
             ),

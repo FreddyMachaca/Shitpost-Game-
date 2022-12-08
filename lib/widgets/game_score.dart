@@ -10,27 +10,27 @@ class GameScore extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Provider.of<GameController>(context);
+    final controller = Provider.of<GameController>(context); // Leer el controlador
 
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween, // Alineacion entre espacios
       children: [
         Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start, // Alineacion al inicio
           children: [
-            Icon(modo == Modo.dificil
+            Icon(modo == Modo.dificil // Si el modo es dificil
                 ? Icons.my_location
                 : Icons.touch_app_rounded),
-            const SizedBox(width: 10),
-            Observer(
+            const SizedBox(width: 10), // Espacio de 10
+            Observer( // Observador
                 builder: (_) => Text(controller.score.toString(),
                     style: const TextStyle(fontSize: 25))),
           ],
         ),
-        Image.asset('images/host.png', width: 38, height: 60),
+        Image.asset('images/host.png', width: 38, height: 60), // Imagen
         TextButton(
-          child: const Text('Salir', style: TextStyle(fontSize: 18)),
-          onPressed: () => Navigator.pop(context),
+          child: const Text('Salir', style: TextStyle(fontSize: 18)), // Texto
+          onPressed: () => Navigator.pop(context), // Salir
         ),
       ],
     );
