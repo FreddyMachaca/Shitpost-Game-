@@ -17,40 +17,40 @@ class ShitpostThemeColor {
       900: Color(0xFF880E4F),
     },
   );
-  static const int _round6PrimaryValue = 0XFFFF1D87; //el color de la app
+  static const int _round6PrimaryValue = 0XFFFF1D87; 
 
-  static const Color background = Color(0XFF121212); //el color de fondo
+  static const Color background = Color(0XFF121212); 
 
-  static ButtonStyle outlineButtonStyle({ //el estilo de los botones
-    Color color = Colors.white, //el color de los botones
-    double padding = 24, //el tamaño de los botones
+  static ButtonStyle outlineButtonStyle({ 
+    Color color = Colors.white, 
+    double padding = 24, 
   }) {
-    return OutlinedButton.styleFrom( //el estilo de los botones
-      primary: color, //el color de los botones
+    return OutlinedButton.styleFrom( 
+      primary: color, 
       padding: EdgeInsets.symmetric(vertical: padding),
       side: BorderSide(color: color),
-      shape: const RoundedRectangleBorder( //el borde de los botones
-        borderRadius: BorderRadius.all(Radius.circular(100)), //el radius circular de los botones
+      shape: const RoundedRectangleBorder( 
+        borderRadius: BorderRadius.all(Radius.circular(100)), 
       ),
     );
   }
 
-  static ThemeData theme = ThemeData(   //el tema de la app
-    brightness: Brightness.dark, //el brillo de la app
-    scaffoldBackgroundColor: background, //el color de fondo de la app
+  static ThemeData theme = ThemeData(   
+    brightness: Brightness.dark, 
+    scaffoldBackgroundColor: background, 
     primarySwatch: color,
     primaryColor: color,
-    textTheme: GoogleFonts.wendyOneTextTheme(   //el tipo de letra de la app
+    textTheme: GoogleFonts.wendyOneTextTheme(   
       ThemeData.dark().textTheme,
     ),
-    outlinedButtonTheme: OutlinedButtonThemeData(  //el estilo de los botones
+    outlinedButtonTheme: OutlinedButtonThemeData(  
       style: outlineButtonStyle(),
     ),
-    appBarTheme: ThemeData.dark().appBarTheme.copyWith( //el estilo de la barra de arriba
-          elevation: 0, //la elevacion de la barra de arriba
-          centerTitle: true, //el titulo de la barra de arriba
-          backgroundColor: Colors.transparent, //el color de fondo de la barra de arriba
-          titleTextStyle: GoogleFonts.wendyOne(fontSize: 25), //el tamaño de la letra de la barra de arriba
+    appBarTheme: ThemeData.dark().appBarTheme.copyWith( 
+          elevation: 0, 
+          centerTitle: true, 
+          backgroundColor: Colors.transparent, 
+          titleTextStyle: GoogleFonts.wendyOne(fontSize: 25), 
         ),
   );
 }
