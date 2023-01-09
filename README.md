@@ -3,7 +3,7 @@ este es un juego de memoria, en el cual se debe recordar la posición de las car
 
 ## ➤ Clonar el repositorio 
 ```javascript
-git clone git@github.com:FreddyMachaca/EstructuraDeDatos.git
+git clone git@github.com:FreddyMachaca/Shitpost-Game-Memory.git
 ```
 ## ➤ejecutar el proyecto
 ```javascript
