@@ -1,14 +1,6 @@
 # Shitpost Game Memory
 
-Este proyecto fue desarrollado como una práctica y aprendizaje de los conceptos presentados en el video tutorial [Jogo da Memória em Flutter](https://www.youtube.com/watch?v=hU8ht030JUM&pp=ygUXZmx1dHRlciBqb2dvIGRlIG1lbW9yaWE%3D).
-
-El proyecto original sirve como ejemplo de un juego de memoria desarrollado con Flutter y tematizado con la serie "Round 6". En él se abordan diversos conceptos, que son esenciales para entender y manejar Flutter de manera efectiva.
-
-El proyecto Shitpost Game Memory sigue estos conceptos con el fin de aprender y practicar estos conceptos, implementándolos en una nueva aplicación. Con esto, se buscaba profundizar en el conocimiento y las habilidades en Flutter.
-
-
-
-
+Este proyecto fue desarrollado como una práctica y aprendizaje. Con esto, se buscaba profundizar en el conocimiento y las habilidades en Flutter.
 
 ## Capturas
 
